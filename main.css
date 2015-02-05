@@ -1,0 +1,19 @@
+body {
+	margin: 5%;
+	font-family: sans-serif;
+}
+
+h1 {
+	font-family: sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	font-weight: bold;
+}
+.centeredDiv {
+	text-align: center;
+}
