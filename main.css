@@ -3,6 +3,11 @@ body {
 	font-family: sans-serif;
 }
 
+h6 {
+	width: 20%;
+	margin: auto;
+}
+
 h1 {
 	font-family: sans-serif;
 }
