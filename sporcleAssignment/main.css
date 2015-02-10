@@ -1,0 +1,29 @@
+body {
+	background-color: #ecf0f1;
+}
+
+button {
+	padding-left: 5%;	
+	padding-right: 5%;	
+	padding-top: 1%;
+	padding-bottom: 1%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 40px;
+	color: #ecf0f1;
+	outline: none;	
+    box-shadow: 5px 5px 5px #888888;	
+	background-color: #e74c3c;
+	border-color: transparent;
+}
+
+button:active{
+	    box-shadow: none;
+	    outline: none;	
+
+}
+
+h1 {
+	margin-top: 5%;
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+}
