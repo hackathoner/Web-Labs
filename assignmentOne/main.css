@@ -1,0 +1,24 @@
+body {
+	margin: 5%;
+	font-family: sans-serif;
+}
+
+h6 {
+	width: 20%;
+	margin: auto;
+}
+
+h1 {
+	font-family: sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	font-weight: bold;
+}
+.centeredDiv {
+	text-align: center;
+}
