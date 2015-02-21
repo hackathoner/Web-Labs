@@ -2,6 +2,19 @@ body {
 	background-color: #ecf0f1;
 }
 
+#score {
+	text-align: right;
+	margin-right: 5%;
+	position: ;
+}
+#timer {
+	text-align: left;
+	margin-left: 5%;
+	margin-bottom: -5%;
+	position: absolute;;
+	vertical-align: text-top;
+}
+
 button {
 	padding-left: 5%;	
 	padding-right: 5%;	
