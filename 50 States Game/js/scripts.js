@@ -4,6 +4,9 @@ window.onload = function() {
     document.getElementById('questionBox').style.display = 'none';   
 
 }
+window.onkeypress = function() {
+    alert(yo)
+};
 if(!localStorage.getItem("highscores")){
         var highscores = [0,0,0,0,0];
         localStorage.setItem("highscores",JSON.stringify(highscores));
