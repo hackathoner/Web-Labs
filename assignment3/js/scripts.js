@@ -3,15 +3,63 @@ window.onload = function() {
     document.getElementById('gameView').style.display = 'none';   
     document.getElementById('questionBox').style.display = 'none';   
 }
-
-
+var qnumber = 1;
+var number=0;
+var score=0;
 var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
 
 var capitals = ["Montgomery", "Juneau", "Phoenix", "Little Rock", "Sacramento", "Denver", "Hartford", "Dover", "Tallahassee", "Atlanta", "Honolulu", "Boise", "Springfield", "Indianapolis", "Des Moines", "Topeka", "Frankfort", "Baton Rouge", "Augusta", "Annapolis", "Boston", "Lansing", "St. Paul", "Jackson", "Jefferson City", "Helena", "Lincoln", "Carson City", "Concord", "Trenton", "Santa Fe", "Albany", "Raleigh", "Bismarck", "Columbus", "Oklahoma City", "Salem", "Harrisburg", "Providence", "Columbia", "Pierre", "Nashville", "Austin", "Salt Lake City", "Montpelier", "Richmond", "Olympia", "Charleston", "Madison", "Cheyenne"];    
+function play() {
+    if(qnumber <= 50){
+        number = Math.floor(Math.random() * (51 - qnumber));
+        showQuestion(states[number]);
+        console.log(states);
+
+        console.log(states);
+        console.log(capitals);
+        console.log(qnumber);
+        qnumber++;
+    }   
+    
+}
+
+function go() {
+        if(document.getElementById('ans').value == ""){
+            alert("The answer is: " + capitals[number]);   
+        }else if(document.getElementById('ans').value == capitals[number]){
+            alert("your answer is correct");
+            score++;
+        }else{
+            alert("Sorry the right answer is: " + capitals[number]);          
+        }
+        states.splice(number, 1);
+        capitals.splice(number, 1);
+        play();
+        document.getElementById('mscore').innerHTML = "Score: " + score;
+        document.getElementById('ans').value = "";   
+}
 
 function startGame() {
     hideElements();
-    
+    document.getElementById('mscore').innerHTML = "Score: " + score;
+    document.getElementById("button").addEventListener("click", function() {
+        if(document.getElementById('ans').value == ""){
+            alert("The answer is: " + capitals[number]);   
+        }else if(document.getElementById('ans').value == capitals[number]){
+            alert("your answer is correct");
+            score++;
+        }else{
+            alert("Sorry the right answer is: " + capitals[number]);          
+        }
+        states.splice(number, 1);
+        capitals.splice(number, 1);
+        play();
+        document.getElementById('mscore').innerHTML = "Score: " + score;
+        document.getElementById('ans').value = "";
+
+
+    });
+    play();
 } 
 function hideElements() {
     document.getElementById('startView').style.display = 'none';   
@@ -74,7 +122,8 @@ function showScore() {
     
 }
 function showQuestion(q) {
-    document.getElementById('title').innerHTML = "What is the Capitol of " + q;   
+    document.getElementById('title').innerHTML = "Question " + qnumber + ": " + "What is the Capitol of " + q;   
+    
 }
 
 function shuffle(array) {
