@@ -3,7 +3,7 @@ function createAlert() {
 	if(!document.getElementById('swag').value != true){
 
 
-	sweetAlert({
+  sweetAlert({
   title: document.getElementById('swag').value,
   type: "success",
   showCancelButton: false,

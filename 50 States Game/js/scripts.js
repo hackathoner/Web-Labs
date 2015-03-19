@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     document.getElementById("start").addEventListener("click", startGame);
     document.getElementById('gameView').style.display = 'none';   
     document.getElementById('questionBox').style.display = 'none';   
@@ -11,7 +11,7 @@ if(!localStorage.getItem("highscores")){
         var highscores = [0,0,0,0,0];
         localStorage.setItem("highscores",JSON.stringify(highscores));
 }
-var qnumber = 1;
+var qnumber = 1 ;
 var score = 0;
 var mynum = 5;
 var intervaled;
