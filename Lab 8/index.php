@@ -18,26 +18,49 @@
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
+	echo 'Your IP Address is: ' . get_client_ip();
+
+
+	function workData() {
+		$db = new SQLite3('yo.db');
+		$db->exec('CREATE TABLE IF NOT EXISTS wowzers (id INTEGER PRIMARY KEY, ip TEXT,visits TEXT);');
+		$userip = get_client_ip();
+		$mys = $db->prepare('SELECT ip FROM wowzers WHERE ip = "' . $userip . '"');
+		$results = $mys -> execute();
+		if($results->fetchArray() == null){
+			$db->exec('INSERT INTO wowzers (ip,visits) VALUES ("'. $userip .'","1");');
+		}else{
+			$q = $db->prepare('SELECT visits FROM wowzers WHERE ip = "' . $userip . '"');
+			$swaq = $q -> execute();
+			$finish = $swaq->fetchArray();
+			$theint = intval($finish) + 1;
+			$db->exec('UPDATE wowzers SET visits = "'. $theint.'" WHERE ip = "' . $userip . '";');
+			// $stmt->bindValue(':id', 1, SQLITE3_INTEGER);
+
+		}
+		
+	};
+	workData();
 	// if ($db = new SQLite3('data.db')) {
 	 	// $db->exec('CREATE TABLE mytable (id INTEGER PRIMARY KEY, ip TEXT,visits INTEGER)');
 		// var_dump($result->fetchArray());
 	// } else {
-	//   die ($sqliteerror);
-	// }
-		function putData() {
-			$myval = get_client_ip();
-		$db->exec('INSERT INTO mytable (ip) VALUES ($myval)');
-		// $db->exec('INSERT INTO mytable (ip) VALUES (get_client_ip()');
-		$stmt = $db->prepare('SELECT ip FROM mytable ORDER BY id;');
-		$result = $stmt->execute();
-		while ($row = $result->fetchArray())
-		{
-		    echo $row['name'] . PHP_EOL;
-		}
+	// //   die ($sqliteerror);
+	// // }
+	// 	function putData() {
+	// 		$myval = get_client_ip();
+	// 	$db->exec('INSERT INTO mytable (ip) VALUES ($myval)');
+	// 	// $db->exec('INSERT INTO mytable (ip) VALUES (get_client_ip()');
+	// 	$stmt = $db->prepare('SELECT ip FROM mytable ORDER BY id;');
+	// 	$result = $stmt->execute();
+	// 	while ($row = $result->fetchArray())
+	// 	{
+	// 	    echo $row['name'] . PHP_EOL;q
+	// 	}
 
-  		// $result = $db->query('SELECT ip FROM mytable');
-  		echo $result;
-		}
-		putData();
-	echo "this is your IP Address: " . get_client_ip();
+ //  		// $result = $db->query('SELECT ip FROM mytable');
+ //  		echo $result;
+	// 	}
+	// 	putData();
+	// echo "this is your IP Address: " . get_client_ip();
 ?>
