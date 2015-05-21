@@ -18,24 +18,31 @@
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
-	echo 'Your IP Address is: ' . get_client_ip();
+	// echo 'Your IP Address is: ' . get_client_ip();
 
 
 	function workData() {
-		$db = new SQLite3('yo.db');
-		$db->exec('CREATE TABLE IF NOT EXISTS wowzers (id INTEGER PRIMARY KEY, ip TEXT,visits TEXT);');
+		echo "<h1>Welcome!</h1>";
+		$db = new SQLite3('work.db');
+		$db->exec('CREATE TABLE IF NOT EXISTS wowzers (id INTEGER PRIMARY KEY, ip TEXT,visits INTEGER);');
 		$userip = get_client_ip();
 		$mys = $db->prepare('SELECT ip FROM wowzers WHERE ip = "' . $userip . '"');
 		$results = $mys -> execute();
 		if($results->fetchArray() == null){
 			$db->exec('INSERT INTO wowzers (ip,visits) VALUES ("'. $userip .'","1");');
+			echo "Your IP Addres is ". $userip;
+
 		}else{
 			$q = $db->prepare('SELECT visits FROM wowzers WHERE ip = "' . $userip . '"');
 			$swaq = $q -> execute();
 			$finish = $swaq->fetchArray();
-			$theint = intval($finish) + 1;
-			$db->exec('UPDATE wowzers SET visits = "'. $theint.'" WHERE ip = "' . $userip . '";');
+			$theint = (int)$finish[0] + 1;
+			// print_r($finish);
+
+			$db->exec('UPDATE wowzers SET visits = ' . $theint . ' WHERE ip = "' . $userip . '";');
 			// $stmt->bindValue(':id', 1, SQLITE3_INTEGER);
+			echo "Your IP Addres is ". $userip;
+			echo "<br><br>You have visited us ". $theint . " times!";
 
 		}
 		

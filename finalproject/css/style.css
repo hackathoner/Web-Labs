@@ -1,0 +1,31 @@
+#navbuttonss {
+	border-width: 2px;
+	border-radius: 7px;
+	border-color: black;
+	outline-width: thick;
+}
+
+.jumbotron {
+	padding-top: 5%;
+	margin-top: -35px;
+	margin-bottom: -35px;
+	height: 100%;
+}
+
+.title {
+	text-align: center;
+}
+
+.form-group {
+	padding-top: 20px;
+	line-height: 5px;
+}
+
+#footer {
+	background-color: #222222;
+	height: 10%;
+}
+
+input {
+	margin-top: 10px;
+}
