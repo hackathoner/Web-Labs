@@ -1,24 +1,13 @@
-<?php 
-	if($_COOKIE["user"] == null) {
-		header("Location: index.php");
-	}
-
-?>
-
 <html>
 	<head>
-		<title>TJ Guides</title>
+		<title>Log in</title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<script src="js/scripts.js"></script>
-		<script>
-			     
-		</script>
-		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale = 1.0,maximum-scale=2.0,user-scalable=no">
 	</head>
 	<body>
+
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
@@ -28,7 +17,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="index.php">TJ Guides</a>
+		      <a class="navbar-brand" href="#">TJ Guides</a>
 		    </div>
 
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -91,76 +80,30 @@
 			 </ul>
 		     <div class="divider"></div>
 		      <ul class="nav navbar-nav navbar-right">
-		      	<?php
-					require 'vendor/autoload.php';
-					use Parse\ParseClient;
-					use Parse\ParseUser;
-					use Parse\ParseQuery;
-					ParseClient::initialize('p2j14hndp186bSPx3Wvab5qbIKypRrtshmXcqgnc', 'h7hGHUj1IulfKW55Dc7HFgtthblt4K5CvzkhIvxV', 's9Y1uBwoCM8UvRliOJbJks00qDoSGS1N6tPQI4TC');
-					use Parse\ParseObject;
-					if($_COOKIE["user"] == null) {
-	    				echo '<li><a href="login.html">Log in</a></li>';
-					    echo '<li><a href="signup.html">Sign up</a></li>';
-					} else {
-
-						$query = ParseUser::query();
-						$query->equalTo("hashed", strval($_COOKIE["user"])); 
-						$results = $query->find();
-						$currentUser = $results[0]->get("name");
-						
-						// $currentUser = ";";
-						echo '<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $currentUser . '<span class="caret"></span></a>
-		                 <ul class="dropdown-menu" role="menu">
-		                 <li><a href="create.php">Post a Study Guide</a></li>
-		                 <li><a href="manage.php">Manage Study Guides</a></li>
-		                <li><a href="logout.php">Log out</a></li></ul></li>';
-					}
-				?>
+		        <li><a href="login.html">Log in</a></li>
+		        <li><a href="signup.html">Sign up</a></li>
 		      </ul>
 		    </div>
 		  </div>
 		</nav>
+
+
 		<div class="container">
-		<form class="form-horizontal" method="POST" action="createGuide.php">
+		<form class="form-horizontal" method="POST" action="login
+		.php">
 		  <fieldset  class="col-md-6 col-md-offset-3">
-		    <legend>Post a New Study Guide</legend>
+		    <legend>Log in</legend>
 		    <div class="form-group">
-		        <input type="text" style="margin-top:0px"class="form-control"  name="Title" id="Title" placeholder="Title">
-		        <textarea class="form-control" rows="3" name="Description" id="Description" placeholder="Description"></textarea>
-		        
-
-				<div class="dropdown">
-				  <button class="btn btn-default dropdown-toggle col-xs-12 swag2" name="subject" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-				    Choose class
-				    <span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu" id="subject" role="menu" name="subject" aria-labelledby="dropdownMenu2">
-				    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Math</a></li>
-				    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Science</a></li>
-				    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Social Studies</a></li>
-				    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">English</a></li>
-				    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>
-				  </ul>
-				</div>
-				<input type="text" class="form-control" name="class" id="class" placeholder="Enter name of class">
-				<input type="text" class="form-control" name="chapter" id="chapter" placeholder="Enter name of chapter">
-		        <input type="file" class="form-control" name="file" id="file">
-		        <input type="submit" class="form-control btn btn-primary" name="submit" id="submit">
-		        <!-- PUSH THE CREATED POST TO PARSE -->
-
+		        <input type="email" class="form-control" autocomplete="off"  name="email" id="email" placeholder="Email">
+		        <input type="password" class="form-control" autocomplete="off"  name="password" id="password" placeholder="Password">
+		        <input type="submit" class="form-control" name="submit" id="submit">
 		    </div>
+			
 		  </fieldset>
 		</form>
 
-
 		</div>
-
-		<!-- <section id="footer">
-
-		</section>
- -->
 	</body>
 </html>
 
-			
 

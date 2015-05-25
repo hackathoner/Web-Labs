@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale = 1.0,maximum-scale=2.0,user-scalable=no">
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse">
@@ -16,7 +17,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="#">TJ Guides</a>
+		      <a class="navbar-brand" href="index.php">TJ Guides</a>
 		    </div>
 
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -79,9 +80,34 @@
 			 </ul>
 		     <div class="divider"></div>
 		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="login.php">Log in</a></li>
-		        <li><a h
-		        ref="signup.php">Sign up</a></li>
+				<?php
+					require 'vendor/autoload.php';
+					use Parse\ParseClient;
+					use Parse\ParseUser;
+					use Parse\ParseQuery;
+					ParseClient::initialize('p2j14hndp186bSPx3Wvab5qbIKypRrtshmXcqgnc', 'h7hGHUj1IulfKW55Dc7HFgtthblt4K5CvzkhIvxV', 's9Y1uBwoCM8UvRliOJbJks00qDoSGS1N6tPQI4TC');
+					use Parse\ParseObject;
+					if($_COOKIE["user"] == null) {
+	    				echo '<li><a href="login.html">Log in</a></li>';
+					    echo '<li><a href="signup.html">Sign up</a></li>';
+					} else {
+
+						$query = ParseUser::query();
+						$query->equalTo("hashed", strval($_COOKIE["user"])); 
+						$results = $query->find();
+						$currentUser = $results[0]->get("name");
+						
+						// $currentUser = ";";
+						echo '<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $currentUser . '<span class="caret"></span></a>
+		                 <ul class="dropdown-menu" role="menu">
+		                 <li><a href="create.php">Post a Study Guide</a></li>
+		                 <li><a href="manage.php">Manage Study Guides</a></li>
+		                <li><a href="logout.php">Log out</a></li></ul></li>';
+					}
+
+					
+				?>
+		        
 		      </ul>
 		    </div>
 		  </div>
@@ -103,12 +129,3 @@
 	</body>
 </html>
 
-
-<?php
-	require 'vendor/autoload.php';
-	use Parse\ParseClient;
-	ParseClient::initialize('p2j14hndp186bSPx3Wvab5qbIKypRrtshmXcqgnc', 'h7hGHUj1IulfKW55Dc7HFgtthblt4K5CvzkhIvxV', 's9Y1uBwoCM8UvRliOJbJks00qDoSGS1N6tPQI4TC');
-	use Parse\ParseObject;
- 
-
-?>
