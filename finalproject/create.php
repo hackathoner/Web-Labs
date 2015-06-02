@@ -121,7 +121,7 @@
 		  </div>
 		</nav>
 		<div class="container">
-		<form class="form-horizontal" method="POST" action="createGuide.php">
+		<form class="form-horizontal" method="post" action="createGuide.php"  enctype="multipart/form-data">
 		  <fieldset  class="col-md-6 col-md-offset-3">
 		    <legend>Post a New Study Guide</legend>
 		    <div class="form-group">
@@ -144,7 +144,7 @@
 				</div>
 				<input type="text" class="form-control" name="class" id="class" placeholder="Enter name of class">
 				<input type="text" class="form-control" name="chapter" id="chapter" placeholder="Enter name of chapter">
-		        <input type="file" class="form-control" name="file" id="file">
+		        <input type="file" class="form-control" name="myfile" id="myfile">
 		        <input type="submit" class="form-control btn btn-primary" name="submit" id="submit">
 		        <!-- PUSH THE CREATED POST TO PARSE -->
 

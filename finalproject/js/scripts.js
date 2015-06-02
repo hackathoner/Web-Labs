@@ -20,7 +20,8 @@ $(function(){
 	
     $("#subject li a").click(function(){
       $(".swag2.btn:first-child").text($(this).text());
-      $(".swag2.btn:first-child").val($(this).text());
+      $(".swag2
+      	.btn:first-child").val($(this).text());
 
       //DO AJAX TO CALL THE PHP FUNCTION TO SHOW THE CLASSES FOR THIS SUBJECT
    });
